@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>각별어 번역기</title>
+        <style type="text/css">
+            body {
+                font-family: Arial;
+                margin: 0px;
+                padding: 50px;
+                background: white;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1.1rem;
+                line-height: 1.7rem;
+            }
+            a {
+                text-decoration: none;
+                color: #0275d8;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            textarea {
+                margin-top: 1rem;
+                width: 45rem;
+                height: 10rem;
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+            #output {
+                margin-top: 5rem;
+                font-size: 1.5rem;
+            }
+        </style>
+        <script>
+            const data = "Angmuse,,과거,,Byeol,,좋은,,Che,,사람,,Chill,,금지,,Coding,,똑똑한,,Codingryong,,쓰다,,Computer,,켜다,,Dia,,이동,,Die,,4,,Done,,돈,,Dui,,후,,Duiehdo,,중세,,Duiyego,,내일,,Ehdo,,고대, 먼 옛날,,Ehdogho,,공룡,,Gak,,역사,,Gakbyeol,,주인,,Gakbyeolgyo,,종교,,Gakha,,안녕하세요,,Gaksonsil,,대기,,Genoma,,부끄러운,,Gho,,맹수, 맹주,,Gongak,,2,,Gongryong,,싸움, 분쟁,,Gumji,,7,,Heptagram,,각별,,Heptlang,,각별어,,Heptsajan,,각별국,,Heptsajanche,,각별인,,Huku,,멤버쉽,,Imi,,전,,Imiduidia,,시간여행,,Imiyego,,어제,,Jakwon,,휴식,,Jikwon,,5,,Jonber,,영상,,Jungjol,,학력,,Kodaran,,마이너한,,Lang,,언어,,Member,,5000원,,Monun,,6,,No~Qtube,,방송,,Nyubee,,배척,,Pyonjipja,,3,,Ramyeon,,쏟다,,RBLX,,투자,,Ryong,,나쁜,,Sajaen,,높은,,Saja,,고위,,Sajaencodingryong,,논문,,Sajaen~Jungjol,,~학자,,Sajan,,고위직의,,Sajang,,고위직,,Seon,,코딩,,Sicham,,신청,,Silhum,,친한,,Silhumche,,지인,,Simpan,,디버깅,,Stell,,암호,,Stellar,,암호화,,Sumchamgi,,공약,,Ssakdook,,1,,Usangsang,,주식,,Yego,,오늘,,Yongsebadunja,,이득 주는 버그,,Ak,,버그"
+            .split(",,");
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('hpt-input').addEventListener('change', onInputChange)
+            });
+            function onInputChange(e) {
+                let input = e.target.value.toString().toLowerCase();
+                while(input.indexOf('member') != -1) {
+                    const n = getNumber(input, input.indexOf('member'));
+                    input = replaceRange(input, n[1]+1, input.indexOf('member') + 6, n[0] + '원')
+                }
+                for(let i = 0; i < data.length / 2; i++) {
+                    input = input.replaceAll(data[i * 2].toLowerCase(), data[i * 2 + 1]);
+                }
+                document.getElementById("hpt-output").innerHTML = input;
+            }
+            function getNumber(str, start) {
+                let n = "";
+                for(let i = start - 1; i >= 0; i--) {
+                    if(/([^0-9,])/gi.test(str.charAt(i)) && !(i === start - 1 && str.charAt(i) === ' ')) {
+                        return [numberWithCommas(5000 * Number(n || 1)), i];
+                    }
+                    if((/([0-9])/gi).test(str.charAt(i))) {
+                        n = str.charAt(i) + n
+                    }
+                }
+
+                return [numberWithCommas(5000 * Number(n || 1)), -1];
+            }
+            function replaceRange(s, start, end, substitute) {
+                return s.substring(0, start) + substitute + s.substring(end);
+            }
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+        </script>
+    </head>
+    <body>
+        <h1>각별어 번역기</h1>
+        <p>
+            해당 사이트는 <a href="https://github.com/monun">monun</a>의 공식 사이트가 아니며 순수한 팬심으로 만든 사이트입니다.
+            <br/>
+            해당 사이트가 만약에 문제가 될 경우, 바로 삭제하겠습니다.
+            <br/>
+            사용 자료는 <a href="https://tgd.kr/s/hptgrm/57394826">각별님 트게더</a>에 있는 사전입니다.
+        </p>
+
+        <textarea id="hpt-input" placeholder="각별어을 넣으세요"></textarea>
+        <br/>
+        <div id="output"><b>결과:</b><p id="hpt-output"></p></div>
+    </body>
+</html>
