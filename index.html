@@ -107,12 +107,12 @@
                     input = replaceRange(input, n[1]+1, input.indexOf('member') + 6, n[0] + '원')
                 }
                 while(true) {
-                    // No~Qtub
-                    const a = input.indexOf("qtub", 0)
+                    // No~Qtube
+                    const a = input.indexOf("qtube", 0)
                     const b = input.lastIndexOf("no", a)
                     if(a === -1 || b === -1) break
                     const str = input.slice(b + 2, a) + "방송";
-                    input = input.slice(0, b) + str + input.slice(a + 4);
+                    input = input.slice(0, b) + str + input.slice(a + 5);
                 }
                 while(true) {
                     // Sajaen~Jungjol
