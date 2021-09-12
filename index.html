@@ -39,9 +39,17 @@
                 margin-top: 5rem;
                 font-size: 1.5rem;
             }
+            footer {
+                font-weight: bold;
+                position: fixed;
+                bottom: 2rem;
+            }
+            img {
+                width: 3rem;
+            }
         </style>
         <script>
-            const data = "Angmuse,과거,Byeol,좋은,Che,사람,Chill,금지,Coding,똑똑한,Codingryong,쓰다,Computer,켜다,Dia,이동,Die,4,Done,돈,Duiehdo,중세,Duiyego,내일,Dui,후,Ehdogho,공룡,Ehdo,고대,Gakbyeol,주인,Gakbyeolgyo,종교,Gakha,안녕하세요,Gaksonsil,대기,Genoma,부끄러운,Gho,맹수,Gongak,2,Gak,역사,Gongryong,분쟁,Gumji,7,Heptagram,각별,Heptlang,각별어,Heptsajan,각별국,Heptsajanche,각별인,Huku,멤버쉽,Imi,전,Imiduidiame,타임머신,Imiduidia,시간여행,Imiyego,어제,Jakwon,휴식,Jayaji,가능성,Jikwon,5,Jonber,영상,Jungjol,학력,Kodaran,마이너한,Minecraft,할 수 있는,Monun,6,Mo,조금,Nabjee,들어오다,No~Qtube,~방송,Nunlangme,번역기,Nunlang,번역,Me,기계,Nun,바꾸다,Lang,언어,Nyubee,배척,Pyonjipja,3,Ramyeon,쏟다,RBLX,투자,Ryong,나쁜,Saja,고위,Sajaen,높은,Sajaencodingryong,논문,Sajaen~Jungjol,학자,Sajang,고위직,Sajan,고위직의,Seon,코딩,Sicham,신청,Silhum,친한,Silhumche,지인,Simpan,디버깅,Stell,암호,Stellar,암호화,Sumchamgi,공약,Ssakdook,1,Update,기대,Usangsang,주식,Yego,오늘,Yongsebadunja,이득 주는 버그,Ak,버그"
+            const data = "Angmuse,과거,Byeol,좋은,Che,사람,Chill,금지,Coding,똑똑한,Codingryong,쓰다,Computer,켜다,Dia,이동,Die,4,Done,돈,Duiehdo,중세,Duiyego,내일,Dui,후,Ehdogho,공룡,Ehdo,고대,Gakbyeolgyo,종교,Gakha,안녕하세요,Gaksonsil,대기,Genoma,부끄러운,Gho,맹수,Gongak,2,Gakbyeol,주인,Gak,역사,Gongryong,분쟁,Gumji,7,Heptagram,각별,Heptlang,각별어,Heptsajan,각별국,Heptsajanche,각별인,Huku,멤버쉽,Imi,전,Imiduidiame,타임머신,Imiduidia,시간여행,Imiyego,어제,Jakwon,휴식,Jayaji,가능성,Jikwon,5,Jonber,영상,Jungjol,학력,Kodaran,마이너한,Minecraft,할 수 있는,Monun,6,Mo,조금,Nabjee,들어오다,No~Qtube,~방송,Nunlangme,번역기,Nunlang,번역,Me,기계,Nun,바꾸다,Lang,언어,Nyubee,배척,Pyonjipja,3,Ramyeon,쏟다,RBLX,투자,Ryong,나쁜,Sajaen,높은,Sajaencodingryong,논문,Sajaen~Jungjol,학자,Sajang,고위직,Sajan,고위직의,Saja,고위,Seon,코딩,Sicham,신청,Silhumche,지인,Silhum,친한,Simpan,디버깅,Stellar,암호화,Stell,암호,Sumchamgi,공약,Ssakdook,1,Update,기대,Usangsang,주식,Yego,오늘,Yongsebadunja,이득 주는 버그,Ak,버그"
             .split(",");
             document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('hpt-input').addEventListener('change', onInputChange)
@@ -91,5 +99,6 @@
         <textarea id="hpt-input" placeholder="각별어을 넣으세요"></textarea>
         <br/>
         <div id="output"><b>결과:</b><p id="hpt-output"></p></div>
+        <footer><a href="https://github.com/monun-lang/monun-lang"><img alt="githubLogo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" /></a></footer>
     </body>
 </html>
