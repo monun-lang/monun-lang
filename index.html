@@ -173,7 +173,7 @@
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             }
             function copyLink() {
-                navigator.clipboard.writeText(window.location.uri + '?translate=' + encodeURI(document.getElementById('hpt-input').value));
+                navigator.clipboard.writeText('https://monun-lang.me?translate=' + encodeURI(document.getElementById('hpt-input').value));
                 alert("링크를 복사하였습니다!")
             }
         </script>
