@@ -40,7 +40,7 @@
                 padding: 1rem;
             }
             #output {
-                margin-top: 5rem;
+                margin-top: 3rem;
                 font-size: 1.5rem;
             }
             footer {
@@ -71,6 +71,19 @@
                 align-items: center;
                 cursor: pointer;
             }
+            #copy-link {
+                background: dodgerblue;
+                color: white;
+                margin-top: 1rem;
+                width: 7rem;
+                height: 3.5rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
             #burger {
                 height: 5px;
                 width: 40px;
@@ -92,6 +105,7 @@
             #burger::after {
                 transform: translateY(15px);
             }
+
         </style>
         <script src="burger.js"></script>
         <script>
@@ -110,9 +124,10 @@
             document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('hpt-input').addEventListener('change', onInputChange)
                 document.getElementById('hpt-input').value = decodeURI(getURLParameter("translate") || '')
+                onInputChange(decodeURI(getURLParameter("translate") || ''))
             });
             function onInputChange(e) {
-                let input = e.target.value.toString().toLowerCase();
+                let input = e.target ? e.target.value.toString().toLowerCase() : e.toLowerCase();
                 while(input.indexOf('member') !== -1) {
                     const n = getNumber(input, input.indexOf('member'));
                     input = replaceRange(input, n[1]+1, input.indexOf('member') + 6, n[0] + '원')
@@ -129,7 +144,6 @@
                     // Sajaen~Jungjol
                     const a = input.indexOf("jungjol", 0)
                     const b = input.lastIndexOf("sajaen", a)
-                    console.log([a, b])
                     if(a === -1 || b === -1) break
                     const str = input.slice(b + 6, a) + "학자";
                     input = input.slice(0, b) + str + input.slice(a + 7);
@@ -158,6 +172,10 @@
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             }
+            function copyLink() {
+                navigator.clipboard.writeText(window.location.uri + '?translate=' + encodeURI(document.getElementById('hpt-input').value));
+                alert("링크를 복사하였습니다!")
+            }
         </script>
     </head>
     <body>
@@ -177,6 +195,7 @@
 
         <label for="hpt-input"></label><textarea id="hpt-input" placeholder="각별어을 넣으세요"></textarea>
         <br/>
+        <div id="copy-link" onclick="copyLink()">링크 복사</div>
         <div id="output"><b>결과:</b><p id="hpt-output"></p></div>
         <footer><a href="https://github.com/monun-lang/monun-lang"><img alt="githubLogo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" /></a></footer>
     </body>
