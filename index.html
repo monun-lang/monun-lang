@@ -95,10 +95,21 @@
         </style>
         <script src="burger.js"></script>
         <script>
+            function getURLParameter(search)  {
+                const sPageURL = window.location.search.substring(1);
+                const sURLVariables = sPageURL.split('&');
+                for(let i = 0; i < sURLVariables.length; i++) {
+                    const sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] === search) {
+                        return sParameterName[1];
+                    }
+                }
+            }
             const data = "Angmuse,과거,Che,사람,Chill,금지,Codingryong,쓰다,Coding,똑똑한,Computer,켜다,Die,4,Done,돈,Duiehdo,중세,Duiyego,내일,Dui,후,Ehdogho,공룡,Github,공사장,Git,공사,Ehdo,고대,Gakbyeolgyo,종교,Gakgether,법,Gakha,안녕하세요,Gaksonsil,대기,Genoma,부끄러운,Gho,맹수,Gongak,2,Gakbyeol,주인,Gongryong,분쟁,Gak,역사,Gumji,7,Heptagram,각별,Heptlang,각별어,Heptsajanche,각별인,Heptsajan,각별국,Hub,장소,Huku,멤버쉽,Imi,전,Imiduidiame,타임머신,Imiduidia,시간여행,Imiyego,어제,Jakwon,휴식,Jayaji,가능성,nosewrong,코틀린,Jikwon,5,Jonber,영상,Jungjol,학력,Kodaran,마이너한,Minecraft,할 수 있는,Monun,6,Mo,조금,Nabjee,들어오다,Nunlangme,번역기,Nunlang,번역,Me,기계,Nunglyokja,날먹,Nung,업데이트,Nun,바꾸다,Lang,언어,Nyubee,배척,Pyonjipja,3,Ramyeon,쏟다,RBLX,투자,Ryong,나쁜,Sajaen,높은,Sajaencodingryong,논문,Sajang,고위직,Sajan,고위직의,Saja,고위,Seon,코딩,Sicham,신청,Silhumche,지인,Silhum,친한,Simpan,디버깅,Stellar,암호화,Stell,암호,Sumchamgi,공약,Ssakdook,1,Update,기대,Usangsang,주식,Imiyego,어제,Yego,오늘,Yongsebadunja,이득 주는 버그,Byeol,좋은,Ak,버그,gether,지키다,Dia,이동"
             .split(",");
             document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('hpt-input').addEventListener('change', onInputChange)
+                document.getElementById('hpt-input').value = decodeURI(getURLParameter("translate"))
             });
             function onInputChange(e) {
                 let input = e.target.value.toString().toLowerCase();
