@@ -109,7 +109,7 @@
             .split(",");
             document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('hpt-input').addEventListener('change', onInputChange)
-                document.getElementById('hpt-input').value = decodeURI(getURLParameter("translate"))
+                document.getElementById('hpt-input').value = decodeURI(getURLParameter("translate") || '')
             });
             function onInputChange(e) {
                 let input = e.target.value.toString().toLowerCase();
